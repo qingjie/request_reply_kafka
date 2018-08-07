@@ -11,3 +11,7 @@ docker run --rm -it -p 8000:8000 -e "KAFKA_REST_PROXY_URL=http://localhost:8082"
 ![Screenshot](c.png)
 ![Screenshot](d.png)
 ![Screenshot](e.png)
+---
+![Screenshot](1.png)
+![Screenshot](2.png)
+![Screenshot](3.png)
