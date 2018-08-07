@@ -12,6 +12,10 @@ docker run --rm -it -p 8000:8000 -e "KAFKA_REST_PROXY_URL=http://localhost:8082"
 ![Screenshot](d.png)
 ![Screenshot](e.png)
 ---
+
+# Synchronous Kafka: Using Spring Request-Reply
+## With the latest release of Spring-Kafka, request-reply semantics are available off-the-shelf. This example demonstrates the simplicity of the Spring-Kafka implementation.
+
 ![Screenshot](0.png)
 ![Screenshot](1.png)
 ![Screenshot](2.png)
