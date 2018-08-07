@@ -1,0 +1,12 @@
+--- 
+kafka: 
+  bootstrap-servers: "localhost:9092"
+  consumergroup: requestreplygroup
+  topic: 
+    request-topic: request-topic
+    requestreply-topic: requestreply-topic
+server: 
+  port: 8080
+spring: 
+  application: 
+    name: request_reply_kafka
