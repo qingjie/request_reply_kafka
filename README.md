@@ -3,5 +3,5 @@
 ## https://dzone.com/articles/synchronous-kafka-using-spring-request-reply-1
 ## http://localhost:8082/
 ## http://localhost:8000
-## a
-## b
+![Screenshot](a.png)
+![Screenshot](b.png)
