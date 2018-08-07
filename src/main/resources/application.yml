@@ -1,6 +1,6 @@
 --- 
 kafka: 
-  bootstrap-servers: "localhost:9092"
+  bootstrap-servers: "34.205.236.80:9092"
   consumergroup: requestreplygroup
   topic: 
     request-topic: request-topic
