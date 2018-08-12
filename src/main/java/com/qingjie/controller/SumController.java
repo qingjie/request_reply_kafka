@@ -31,30 +31,34 @@ public class SumController {
 	@Value("${kafka.topic.requestreply-topic}")
 	String requestReplyTopic;
 
+	@Value("${kafka.topic.request-topic-parition-id}")
+	String requestReplyTopicParition;
+
 	@ResponseBody
 	@PostMapping(value = "/sum", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Model sum(@RequestBody Model request) throws InterruptedException, ExecutionException {
-		
-		//create producer record
-		ProducerRecord<String, Model> record = new ProducerRecord<String, Model>(requestTopic, request);
-		
-		//set reply topic in header
+
+		// create producer record
+		ProducerRecord<String, Model> record = new ProducerRecord<String, Model>(requestTopic, "zhao", request);
+
+		// set reply topic in header
 		record.headers().add(new RecordHeader(KafkaHeaders.REPLY_TOPIC, requestReplyTopic.getBytes()));
-		
-		//post in kafka topic
+
+		// post in kafka topic
 		RequestReplyFuture<String, Model, Model> sendAndReceive = kafkaTemplate.sendAndReceive(record);
-		
+
 		// confirm if producer produced successfully
 		SendResult<String, Model> sendResult = sendAndReceive.getSendFuture().get();
 
+		System.out.println("---------start to print header------");
 		// print all headers
 		sendResult.getProducerRecord().headers()
-				.forEach(header -> System.out.println(header.key() + ":" + header.value().toString()));
-
-		//get consumer record
+				.forEach(header -> System.out.println(header.key() + " : " + header.value().toString()));
+		System.out.println("---------end to print header------");
+		// get consumer record
 		ConsumerRecord<String, Model> consumerRecord = sendAndReceive.get();
 
-		//return consumer value
+		// return consumer value
 		return consumerRecord.value();
 	}
 
