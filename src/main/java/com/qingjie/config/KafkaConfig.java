@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -86,7 +87,7 @@ public class KafkaConfig {
 	// Default Consumer Factory
 	@Bean
 	public ConsumerFactory<String, Model> consumerFactory() {
-		return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new JsonDeserializer(),
+		return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(),
 				new JsonDeserializer<>(Model.class));
 	}
 
